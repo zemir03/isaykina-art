@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Кристина Исайкина — картины, портреты и росписи</title>
+    <meta
+      name="description"
+      content="Портфолио художницы Кристины Исайкиной: картины, портреты и росписи. Оставьте заявку — я свяжусь с вами."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+    <header class="header" data-header>
+      <div class="container header__inner">
+        <a class="brand" href="#top" aria-label="На верх страницы">
+          <span class="brand__mark" aria-hidden="true">К</span>
+          <span class="brand__text">Кристина Исайкина</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">
+          <span class="nav-toggle__line" aria-hidden="true"></span>
+          <span class="nav-toggle__line" aria-hidden="true"></span>
+          <span class="nav-toggle__line" aria-hidden="true"></span>
+          <span class="sr-only">Меню</span>
+        </button>
+
+        <nav class="nav" id="nav" data-nav>
+          <a class="nav__link" href="#about">Обо мне</a>
+          <a class="nav__link" href="#portfolio">Портфолио</a>
+          <a class="nav__link" href="#services">Услуги и цены</a>
+          <a class="nav__link" href="#contacts">Контакты</a>
+          <a class="nav__cta button button--primary" href="#order">Оставить заявку</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-label="Приветствие">
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <p class="badge">Художественные работы на заказ</p>
+            <h1 class="hero__title">
+              Картины, портреты и росписи — вручную, с заботой о деталях
+            </h1>
+            <p class="hero__lead">
+              Меня зовут Кристина Исайкина. Пишу картины, создаю портреты и росписи для дома,
+              интерьера и особых поводов.
+            </p>
+
+            <div class="hero__actions">
+              <a class="button button--primary" href="#portfolio">Смотреть работы</a>
+              <a class="button button--ghost" href="#order">Заказать рисунок</a>
+            </div>
+
+            <ul class="hero__facts" aria-label="Коротко о работе">
+              <li class="hero__fact">
+                <span class="hero__factTitle">Сроки</span>
+                <span class="hero__factValue">от 1 дня</span>
+              </li>
+              <li class="hero__fact">
+                <span class="hero__factTitle">Форматы</span>
+                <span class="hero__factValue">холсты, стены, предметы</span>
+              </li>
+              <li class="hero__fact">
+                <span class="hero__factTitle">Правки</span>
+                <span class="hero__factValue">включены</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero__art" aria-hidden="true">
+            <div class="art-card">
+              <div class="art-card__shine"></div>
+              <div class="art-card__frame">
+                <img
+                  class="art-card__img"
+                  src="assets/images/work-1.png"
+                  alt="Роспись стен с персонажами в детской зоне"
+                  width="720"
+                  height="480"
+                  loading="eager"
+                />
+              </div>
+              <div class="art-card__meta">
+                <div class="art-card__chip">роспись стен</div>
+                <div class="art-card__chip">детский сюжет</div>
+                <div class="art-card__chip">на заказ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">Обо мне</h2>
+            <p class="section__subtitle">
+              Живые фактуры, ручная работа и внимание к настроению в каждом сюжете.
+            </p>
+          </div>
+
+          <div class="about">
+            <div class="card card--soft">
+              <h3 class="card__title">Что я делаю</h3>
+              <p class="card__text">
+                Пишу картины и портреты, делаю росписи стен и предметов. Это могут быть работы
+                для дома, подарка или интерьера.
+              </p>
+              <ul class="list">
+                <li>Работаю по референсам или по описанию</li>
+                <li>Согласовываю этапы: эскиз → цвет → финал</li>
+                <li>Соблюдаю сроки и фиксирую договорённости</li>
+              </ul>
+            </div>
+
+            <div class="card card--outline">
+              <h3 class="card__title">Как проходит заказ</h3>
+              <ol class="steps">
+                <li class="steps__item">
+                  <span class="steps__num">1</span>
+                  <span class="steps__text">Вы оставляете заявку и прикрепляете идею/референсы</span>
+                </li>
+                <li class="steps__item">
+                  <span class="steps__num">2</span>
+                  <span class="steps__text">Я уточняю детали и предлагаю вариант по цене/срокам</span>
+                </li>
+                <li class="steps__item">
+                  <span class="steps__num">3</span>
+                  <span class="steps__text">Делаю эскиз, затем цвет и финал с правками</span>
+                </li>
+              </ol>
+              <a class="button button--primary button--wide" href="#order">Оставить заявку</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="portfolio">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">Портфолио</h2>
+            <p class="section__subtitle">
+              Кликните по работе, чтобы посмотреть крупнее.
+            </p>
+          </div>
+
+          <div class="gallery" data-gallery>
+            <button
+              class="gallery__item"
+              type="button"
+              data-open-lightbox
+              data-full="assets/images/work-1.png"
+              aria-label="Открыть работу 1"
+            >
+              <img src="assets/images/work-1.png" alt="Роспись стен: детский сюжет" loading="lazy" />
+              <span class="gallery__cap">Роспись стен · детский сюжет</span>
+            </button>
+            <button
+              class="gallery__item"
+              type="button"
+              data-open-lightbox
+              data-full="assets/images/work-5.png"
+              aria-label="Открыть работу 2"
+            >
+              <img src="assets/images/work-5.png" alt="Роспись стен: тропики и океан" loading="lazy" />
+              <span class="gallery__cap">Роспись стен · тропики и океан</span>
+            </button>
+            <button
+              class="gallery__item"
+              type="button"
+              data-open-lightbox
+              data-full="assets/images/work-3.png"
+              aria-label="Открыть работу 3"
+            >
+              <img src="assets/images/work-3.png" alt="Роспись холодильника: советская пивная" loading="lazy" />
+              <span class="gallery__cap">Роспись предметов · холодильник</span>
+            </button>
+            <button
+              class="gallery__item"
+              type="button"
+              data-open-lightbox
+              data-full="assets/images/work-7.png"
+              aria-label="Открыть работу 4"
+            >
+              <img src="assets/images/work-7.png" alt="Роспись стен: узор с домиками" loading="lazy" />
+              <span class="gallery__cap">Роспись стен · узор с домиками</span>
+            </button>
+            <button
+              class="gallery__item"
+              type="button"
+              data-open-lightbox
+              data-full="assets/images/work-6.png"
+              aria-label="Открыть работу 5"
+            >
+              <img src="assets/images/work-6.png" alt="Роспись стен: графика города" loading="lazy" />
+              <span class="gallery__cap">Роспись стен · графика города</span>
+            </button>
+            <button
+              class="gallery__item"
+              type="button"
+              data-open-lightbox
+              data-full="assets/images/work-2.png"
+              aria-label="Открыть работу 6"
+            >
+              <img src="assets/images/work-2.png" alt="Роспись предмета: сундук" loading="lazy" />
+              <span class="gallery__cap">Роспись предметов · сундук</span>
+            </button>
+            <button
+              class="gallery__item"
+              type="button"
+              data-open-lightbox
+              data-full="assets/images/work-4.png"
+              aria-label="Открыть работу 7"
+            >
+              <img src="assets/images/work-4.png" alt="Роспись: стенд «Парикмахерская»" loading="lazy" />
+              <span class="gallery__cap">Роспись · стенд «Парикмахерская»</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">Услуги и цены</h2>
+            <p class="section__subtitle">
+              Прайс ориентировочный — точную стоимость скажу после заявки и описания задачи.
+            </p>
+          </div>
+
+          <div class="pricing">
+            <article class="price card card--outline">
+              <h3 class="price__title">Портрет</h3>
+              <p class="price__value">от 3 500 ₽</p>
+              <ul class="list list--compact">
+                <li>Портрет с фото или с натуры</li>
+                <li>Формат и техника по согласованию</li>
+                <li>1–2 этапа правок по эскизу</li>
+              </ul>
+              <a class="button button--ghost button--wide" href="#order">Заказать портрет</a>
+            </article>
+
+            <article class="price card card--soft price--featured">
+              <div class="price__badge">Популярно</div>
+              <h3 class="price__title">Роспись</h3>
+              <p class="price__value">от 5 000 ₽</p>
+              <ul class="list list--compact">
+                <li>Стены, предметы интерьера, мебель</li>
+                <li>Эскиз перед началом работ</li>
+                <li>Учёт особенностей поверхности и помещения</li>
+              </ul>
+              <a class="button button--primary button--wide" href="#order">Обсудить роспись</a>
+            </article>
+
+            <article class="price card card--outline">
+              <h3 class="price__title">Картина</h3>
+              <p class="price__value">от 6 000 ₽</p>
+              <ul class="list list--compact">
+                <li>Пейзаж, сюжетная или абстрактная работа</li>
+                <li>Подбор размера и вешения под пространство</li>
+                <li>Согласование композиции и цветового настроения</li>
+              </ul>
+              <a class="button button--ghost button--wide" href="#order">Хочу картину</a>
+            </article>
+          </div>
+
+          <div class="note">
+            <strong>Важно:</strong> не рисую NSFW и незаконные темы. Сроки зависят от сложности.
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="contacts">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">Контакты</h2>
+            <p class="section__subtitle">
+              Выберите удобный способ связи или оставьте заявку — я отвечу.
+            </p>
+          </div>
+
+          <div class="contacts">
+            <div class="card card--outline">
+              <h3 class="card__title">Соцсети</h3>
+              <div class="chips" role="list">
+                <a
+                  class="chip"
+                  href="https://t.me/Kristy27Misty"
+                  target="_blank"
+                  rel="noreferrer"
+                  role="listitem"
+                >
+                  Telegram
+                </a>
+                <a
+                  class="chip"
+                  href="https://vk.com/kisaykina"
+                  target="_blank"
+                  rel="noreferrer"
+                  role="listitem"
+                >
+                  ВКонтакте
+                </a>
+              </div>
+            </div>
+
+            <div class="card card--soft">
+              <h3 class="card__title">Быстрый заказ</h3>
+              <p class="card__text">
+                Опиши, что нужно, и оставь контакт — я вернусь с ценой и сроком.
+              </p>
+              <a class="button button--primary button--wide" href="#order">Оставить заявку</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="order" aria-label="Форма заявки">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title">Оставить заявку</h2>
+            <p class="section__subtitle">
+              Имя и контакт — чтобы я могла ответить. Сейчас заявка сохраняется на этом ПК и
+              её можно скопировать.
+            </p>
+          </div>
+
+          <div class="order">
+            <form class="form card card--outline" data-lead-form novalidate>
+              <div class="form__grid">
+                <label class="field">
+                  <span class="field__label">Имя</span>
+                  <input class="field__input" name="name" autocomplete="name" required />
+                  <span class="field__error" data-error-for="name"></span>
+                </label>
+
+                <label class="field">
+                  <span class="field__label">Контакт</span>
+                  <input
+                    class="field__input"
+                    name="contact"
+                    placeholder="@telegram / email / телефон"
+                    autocomplete="email"
+                    required
+                  />
+                  <span class="field__error" data-error-for="contact"></span>
+                </label>
+              </div>
+
+              <div class="form__actions">
+                <button class="button button--primary" type="submit">Отправить</button>
+                <button class="button button--ghost" type="button" data-fill-demo>
+                  Заполнить пример
+                </button>
+              </div>
+
+              <p class="form__hint">
+                Нажимая «Отправить», вы соглашаетесь на обработку данных для связи по заявке.
+              </p>
+            </form>
+
+            <aside class="card card--soft order__aside">
+              <h3 class="card__title">Что лучше указать</h3>
+              <ul class="list">
+                <li>Тип работы (портрет/персонаж/обложка)</li>
+                <li>Сроки (если важно)</li>
+                <li>Референсы (можно ссылкой в сообщении позже)</li>
+              </ul>
+              <div class="divider"></div>
+              <p class="card__text card__text--muted">
+                Telegram‑отправку подключим позже одним обновлением, без переделки страницы.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span class="footer__copy">© <span data-year></span> Исайкина К.</span>
+        <a class="footer__link" href="#top">Наверх</a>
+      </div>
+    </footer>
+
+    <dialog class="lightbox" data-lightbox aria-label="Просмотр работы">
+      <button class="lightbox__close" type="button" data-close-lightbox aria-label="Закрыть">
+        ✕
+      </button>
+      <img class="lightbox__img" data-lightbox-img alt="Работа" />
+    </dialog>
+
+    <dialog class="thanks" data-thanks aria-label="Заявка сохранена">
+      <div class="thanks__card">
+        <h3 class="thanks__title">Спасибо! Заявка сохранена</h3>
+        <p class="thanks__text">
+          Сейчас отправка отключена (сайт работает локально). Можно скопировать текст и
+          вручную отправить в Telegram.
+        </p>
+        <div class="thanks__box">
+          <textarea class="thanks__textarea" data-thanks-text readonly></textarea>
+          <div class="thanks__actions">
+            <button class="button button--primary" type="button" data-copy-lead>
+              Скопировать
+            </button>
+            <button class="button button--ghost" type="button" data-close-thanks>
+              Закрыть
+            </button>
+          </div>
+          <p class="thanks__hint" data-copy-hint></p>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
+
+
+
+
+
