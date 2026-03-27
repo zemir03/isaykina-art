@@ -332,8 +332,7 @@
           <div class="section__head">
             <h2 class="section__title">Оставить заявку</h2>
             <p class="section__subtitle">
-              Имя и контакт — чтобы я могла ответить. Сейчас заявка сохраняется на этом ПК и
-              её можно скопировать.
+              Имя и контакт — чтобы я могла ответить. Заявка отправляется в Telegram.
             </p>
           </div>
 
@@ -380,7 +379,7 @@
               </ul>
               <div class="divider"></div>
               <p class="card__text card__text--muted">
-                Telegram‑отправку подключим позже одним обновлением, без переделки страницы.
+                Обычно отвечаю в течение дня. Если срочно — напишите напрямую в Telegram или ВК.
               </p>
             </aside>
           </div>
@@ -402,29 +401,26 @@
       <img class="lightbox__img" data-lightbox-img alt="Работа" />
     </dialog>
 
-    <dialog class="thanks" data-thanks aria-label="Заявка сохранена">
+    <dialog class="thanks" data-thanks aria-label="Заявка отправлена">
       <div class="thanks__card">
-        <h3 class="thanks__title">Спасибо! Заявка сохранена</h3>
+        <div class="thanks__icon" aria-hidden="true">✓</div>
+        <h3 class="thanks__title">Спасибо за заявку!</h3>
         <p class="thanks__text">
-          Сейчас отправка отключена (сайт работает локально). Можно скопировать текст и
-          вручную отправить в Telegram.
+          Я уже получила ваше сообщение и отвечу в ближайшее время.
         </p>
-        <div class="thanks__box">
-          <textarea class="thanks__textarea" data-thanks-text readonly></textarea>
-          <div class="thanks__actions">
-            <button class="button button--primary" type="button" data-copy-lead>
-              Скопировать
-            </button>
-            <button class="button button--ghost" type="button" data-close-thanks>
-              Закрыть
-            </button>
-          </div>
-          <p class="thanks__hint" data-copy-hint></p>
-        </div>
+        <p class="thanks__text thanks__text--tip">
+          Если срочно, можно написать напрямую:
+          <a class="thanks__link" href="https://t.me/Kristy27Misty" target="_blank" rel="noreferrer">Telegram</a>
+          или
+          <a class="thanks__link" href="https://vk.com/kisaykina" target="_blank" rel="noreferrer">ВК</a>.
+        </p>
+        <button class="button button--primary button--wide" type="button" data-close-thanks>
+          Отлично!
+        </button>
       </div>
     </dialog>
 
-    <script src="assets/app.js"></script>
+    <script src="assets/app.js?v=4"></script>
   </body>
 </html>
 

@@ -830,7 +830,7 @@ dialog::backdrop {
 }
 
 .thanks {
-  width: min(720px, calc(100% - 24px));
+  width: min(440px, calc(100% - 24px));
 }
 
 .thanks__card {
@@ -838,47 +838,57 @@ dialog::backdrop {
   border: 1px solid var(--border);
   background: rgba(16, 18, 26, 0.88);
   backdrop-filter: blur(14px);
-  padding: 18px;
+  padding: 32px 28px;
   box-shadow: var(--shadow);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.thanks__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 12px;
+  animation: thanksPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes thanksPopIn {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
 }
 
 .thanks__title {
-  margin: 0 0 8px;
-  font-size: 20px;
+  margin: 0 0 4px;
+  font-size: 22px;
 }
 
 .thanks__text {
-  margin: 0 0 12px;
+  margin: 0 0 6px;
   color: var(--muted);
+  line-height: 1.5;
 }
 
-.thanks__box {
-  display: grid;
-  gap: 10px;
-}
-
-.thanks__textarea {
-  width: 100%;
-  min-height: 140px;
-  resize: vertical;
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 12px;
-  font: inherit;
-  color: var(--text);
-}
-
-.thanks__actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.thanks__hint {
-  margin: 0;
-  min-height: 18px;
+.thanks__text--tip {
+  font-size: 14px;
   color: var(--muted2);
-  font-weight: 700;
-  font-size: 12.5px;
+  margin-bottom: 18px;
+}
+
+.thanks__link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.thanks__link:hover {
+  color: var(--accent2);
 }

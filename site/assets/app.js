@@ -78,17 +78,16 @@
     });
   }
 
-  // Leads (local-only for now)
+  // Leads
   const STORAGE_KEY = "artist_site_leads_v1";
+  const WORKER_URL = "https://isaykina-art-leads.zrvzir40.workers.dev";
 
   const thanksDlg = $("[data-thanks]");
-  const thanksText = $("[data-thanks-text]");
-  const closeThanksBtn = $("[data-close-thanks]");
-  const copyBtn = $("[data-copy-lead]");
-  const copyHint = $("[data-copy-hint]");
+  const closeThanksBtn = $$("[data-close-thanks]");
 
   const form = $("[data-lead-form]");
   const fillDemoBtn = $("[data-fill-demo]");
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
 
   const getField = (name) => (form ? form.elements.namedItem(name) : null);
   const errElFor = (name) => $(`[data-error-for="${name}"]`, form || document);
@@ -160,56 +159,52 @@
     ].join("\n");
   };
 
-  // Later this can be replaced with real delivery (Telegram / email / etc.)
-  const submitLead = async (lead) => {
-    const ok = saveLead(lead);
-    return { ok };
+  const isDeliveryConfigured = () =>
+    WORKER_URL && WORKER_URL !== "YOUR_WORKER_URL";
+
+  const sendLeadViaWorker = async (lead) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+    const dt = new Date(lead.createdAt);
+    const created = Number.isNaN(dt.getTime()) ? lead.createdAt : dt.toLocaleString("ru-RU");
+
+    const res = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: lead.name, contact: lead.contact, created }),
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timeoutId));
+
+    const data = await res.json().catch(() => null);
+    if (!res.ok || !data?.ok) {
+      return { ok: false, error: data?.error || "worker_error" };
+    }
+    return { ok: true };
   };
 
-  const openThanks = (text) => {
-    if (thanksText) thanksText.value = text;
-    if (copyHint) copyHint.textContent = "";
-    safeShowModal(thanksDlg);
+  const submitLead = async (lead) => {
+    const saved = saveLead(lead);
+    if (!saved) return { ok: false, reason: "local_save_failed" };
+    if (!isDeliveryConfigured()) return { ok: false, reason: "not_configured" };
+
+    try {
+      const sent = await sendLeadViaWorker(lead);
+      if (!sent.ok) return { ok: false, reason: "delivery_failed", error: sent.error };
+    } catch (err) {
+      return { ok: false, reason: "delivery_failed", error: err.message || String(err) };
+    }
+    return { ok: true };
   };
+
+  const openThanks = () => safeShowModal(thanksDlg);
 
   const closeThanks = () => safeClose(thanksDlg);
-  if (closeThanksBtn) closeThanksBtn.addEventListener("click", closeThanks);
+  closeThanksBtn.forEach((btn) => btn.addEventListener("click", closeThanks));
   if (thanksDlg) {
     thanksDlg.addEventListener("cancel", (e) => {
       e.preventDefault();
       closeThanks();
-    });
-  }
-
-  const copyToClipboard = async (text) => {
-    if (!text) return false;
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch {
-      try {
-        // Fallback
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.style.position = "fixed";
-        ta.style.left = "-9999px";
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        const ok = document.execCommand("copy");
-        document.body.removeChild(ta);
-        return ok;
-      } catch {
-        return false;
-      }
-    }
-  };
-
-  if (copyBtn) {
-    copyBtn.addEventListener("click", async () => {
-      const text = thanksText?.value || "";
-      const ok = await copyToClipboard(text);
-      if (copyHint) copyHint.textContent = ok ? "Скопировано в буфер обмена." : "Не удалось скопировать.";
     });
   }
 
@@ -226,7 +221,16 @@
   if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (!validate()) return;
+      if (!validate()) {
+        alert("Заполни, пожалуйста, имя и контакт для связи.");
+        return;
+      }
+
+      const prevBtnText = submitBtn?.textContent || "";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Отправка...";
+      }
 
       const lead = {
         id: String(Date.now()),
@@ -237,15 +241,30 @@
 
       const res = await submitLead(lead);
       if (!res?.ok) {
-        alert("Не удалось сохранить заявку. Попробуйте ещё раз.");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = prevBtnText || "Отправить";
+        }
+        if (res?.reason === "not_configured") {
+          alert(
+            "Отправка не настроена: укажи WORKER_URL в assets/app.js (см. README)."
+          );
+        } else {
+          alert(
+            `Не удалось отправить заявку в Telegram.${res?.error ? `\nПричина: ${res.error}` : ""}`
+          );
+        }
         return;
       }
 
-      const text = formatLeadText(lead);
-      openThanks(text);
+      openThanks();
       form.reset();
       setError("name", "");
       setError("contact", "");
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = prevBtnText || "Отправить";
+      }
     });
 
     ["input", "blur"].forEach((evt) => {
