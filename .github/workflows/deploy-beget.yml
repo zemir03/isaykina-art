@@ -16,11 +16,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      # Корректно подхватывает многострочный приватный ключ (лучше, чем echo в файл)
-      - name: SSH agent
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.BEGET_SSH_KEY }}
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
 
       - name: Known hosts
         run: |
@@ -30,10 +27,12 @@ jobs:
           chmod 644 ~/.ssh/known_hosts
 
       - name: Deploy site files
+        env:
+          SSHPASS: ${{ secrets.BEGET_PASSWORD }}
         run: |
           if [ -d site ]; then SRC="./site/"; else SRC="./"; fi
           rsync -avz --delete \
-            -e "ssh -o IdentitiesOnly=yes" \
+            -e "sshpass -e ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no" \
             --exclude ".git" \
             --exclude ".github" \
             --exclude ".deploy" \
