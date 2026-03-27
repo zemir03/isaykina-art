@@ -16,18 +16,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Setup SSH key
+      # Корректно подхватывает многострочный приватный ключ (лучше, чем echo в файл)
+      - name: SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.BEGET_SSH_KEY }}
+
+      - name: Known hosts
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.BEGET_SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          chmod 700 ~/.ssh
           ssh-keyscan -H "${{ secrets.BEGET_HOST }}" >> ~/.ssh/known_hosts
-          ssh-keygen -y -f ~/.ssh/id_ed25519 > /dev/null
+          chmod 644 ~/.ssh/known_hosts
 
       - name: Deploy site files
         run: |
           if [ -d site ]; then SRC="./site/"; else SRC="./"; fi
           rsync -avz --delete \
+            -e "ssh -o IdentitiesOnly=yes" \
             --exclude ".git" \
             --exclude ".github" \
             --exclude ".deploy" \
