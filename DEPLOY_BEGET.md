@@ -33,6 +33,6 @@ ssh-keygen -t ed25519 -C "github-deploy" -f ./github-beget -N ""
 
 1. Сгенерируй **Ed25519**.
 2. Скопируй **public key** для OpenSSH (бокс сверху) → в `authorized_keys` на Beget.
-3. **Save private key** → открой сохранённый файл в блокноте и вставь **весь** текст в `BEGET_SSH_KEY`.
+3. Меню **Conversions → Export OpenSSH key** (нужен именно OpenSSH, не `.ppk`) → сохрани файл, открой в блокноте и вставь **весь** текст в `BEGET_SSH_KEY`.
 
 После этого в GitHub: **Actions → Deploy To Beget → Run workflow.**
